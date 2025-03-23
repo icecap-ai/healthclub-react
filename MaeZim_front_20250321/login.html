@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaeZim 로그인</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        align-items: center;
+      }
+      /* 헤더와 푸터가 로드될 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+      .login-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 350px;
+        margin: 2rem auto;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+      .input-group {
+        margin-bottom: 1rem;
+        text-align: left;
+      }
+      .input-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      .input-group input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+      button {
+        width: 100%;
+        padding: 0.75rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-top: 1rem;
+        font-weight: 600;
+      }
+      button:hover {
+        background-color: #0056b3;
+      }
+      .extra-links {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
+      .extra-links a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      .extra-links a:hover {
+        text-decoration: underline;
+      }
+      .social-login {
+        margin-top: 1.5rem;
+      }
+      .social-login h2 {
+        font-size: 1rem;
+        color: #555;
+        margin-bottom: 1rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+      }
+      .social-login h2::before,
+      .social-login h2::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #ddd;
+        margin: 0 10px;
+      }
+      .social-login button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      .social-login button img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+      .gmail-login {
+        background-color: white;
+        color: black;
+      }
+      .kakao-login {
+        background-color: #fee500;
+        color: #3c1e1e;
+      }
+      .naver-login {
+        background-color: #03c75a;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 로그인 컨테이너 -->
+    <div class="login-container">
+      <h1>MaeZim 로그인</h1>
+      <form action="login_process.php" method="POST">
+        <div class="input-group">
+          <label for="email">이메일</label>
+          <input type="email" id="email" name="email" required />
+        </div>
+        <div class="input-group">
+          <label for="password">비밀번호</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <button type="submit">로그인</button>
+      </form>
+      <div class="social-login">
+        <h2>간편 로그인</h2>
+        <button class="gmail-login">
+          <img src="assets/images/goggle.png" alt="Google" />Google 로그인
+        </button>
+        <button class="kakao-login">
+          <img src="assets/images/kakao.png" alt="Kakao" />카카오 로그인
+        </button>
+        <button class="naver-login">
+          <img src="assets/images/naver.png" alt="Naver" />네이버 로그인
+        </button>
+      </div>
+      <div class="extra-links">
+        <a href="#">비밀번호 찾기</a> |
+        <a href="signup.html">회원가입</a>
+      </div>
+    </div>
+  </body>
+</html>

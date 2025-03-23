@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>무료 체험 - MaeZim</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /* 헤더와 푸터 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto p-4">
+      <!-- 무료 체험 소개 배너 -->
+      <section
+        class="bg-cover bg-center h-80 rounded mb-8"
+        style="background-image: url('assets/images/gym-banner.jpg')"
+      >
+        <div
+          class="bg-black bg-opacity-50 h-full flex flex-col items-center justify-center"
+        >
+          <h1 class="text-white text-4xl font-bold mb-4">무료 체험</h1>
+          <p class="text-white text-xl mb-6">
+            MaeZim의 혁신적인 헬스클럽 예약 시스템을 무료로 체험해보세요!
+          </p>
+          <a
+            href="#trial-form"
+            class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+            >무료 체험 신청하기</a
+          >
+        </div>
+      </section>
+
+      <!-- 무료 체험 혜택 소개 섹션 -->
+      <section class="bg-white p-6 rounded shadow mb-8">
+        <h2 class="text-2xl font-bold mb-4">무료 체험 혜택</h2>
+        <ul class="list-disc list-inside text-gray-700 space-y-2">
+          <li>최신 AI 기반 헬스클럽 추천 서비스 체험</li>
+          <li>실시간 예약 및 예약 현황 확인</li>
+          <li>맞춤형 운동 프로그램 및 트레이너 추천</li>
+          <li>무료 체험 기간 동안 모든 기능 무제한 사용</li>
+        </ul>
+      </section>
+
+      <!-- 무료 체험 신청 폼 섹션 -->
+      <section id="trial-form" class="bg-white p-6 rounded shadow">
+        <h2 class="text-2xl font-bold mb-4 text-center">무료 체험 신청</h2>
+        <form
+          action="free_trial_process.php"
+          method="POST"
+          class="space-y-4 max-w-md mx-auto"
+        >
+          <div>
+            <label for="name" class="block font-semibold mb-1">이름</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="이름 입력"
+              required
+              class="w-full border p-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="email" class="block font-semibold mb-1">이메일</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="이메일 입력"
+              required
+              class="w-full border p-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="phone" class="block font-semibold mb-1">연락처</label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="연락처 입력"
+              required
+              class="w-full border p-2 rounded"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-green-500 text-white p-3 rounded font-semibold hover:bg-green-600"
+          >
+            신청하기
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <!-- 공통 푸터 불러오기 -->
+    <div id="footer"></div>
+
+    <!-- 헤더 및 푸터 불러오기 스크립트 -->
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

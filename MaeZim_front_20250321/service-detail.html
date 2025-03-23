@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>헬스클럽 상세 정보 - MaeZim</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /* 헤더와 푸터 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto p-4">
+      <!-- 뒤로 가기 링크 -->
+      <div class="mb-4">
+        <a href="search.html" class="text-blue-500 hover:underline"
+          >&larr; 헬스클럽 목록으로 돌아가기</a
+        >
+      </div>
+
+      <!-- 헬스클럽 기본 정보 및 이미지 갤러리 섹션 -->
+      <section class="mb-8">
+        <h1 class="text-3xl font-bold mb-4">헬스클럽 1</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- 이미지 갤러리 -->
+          <div class="space-y-4">
+            <img
+              src="assets/images/gym1.jpg"
+              alt="헬스클럽 1 사진 1"
+              class="w-full h-64 object-cover rounded"
+            />
+            <img
+              src="assets/images/gym1-2.jpg"
+              alt="헬스클럽 1 사진 2"
+              class="w-full h-64 object-cover rounded"
+            />
+          </div>
+          <!-- 기본 정보 -->
+          <div class="bg-white p-4 rounded shadow">
+            <p class="mb-2">
+              <span class="font-semibold">주소:</span> 서울 강남구 테헤란로 123
+            </p>
+            <p class="mb-2">
+              <span class="font-semibold">전화번호:</span> 02-1234-5678
+            </p>
+            <p class="mb-2">
+              <span class="font-semibold">운영 시간:</span> 06:00 - 23:00
+            </p>
+            <p class="mb-2">
+              <span class="font-semibold">회원권:</span> 월정액, 1회권 등 다양한
+              옵션
+            </p>
+            <!-- 예약 버튼 -->
+            <a
+              href="reserve.html"
+              class="inline-block mt-4 bg-blue-500 text-white px-6 py-2 rounded hover:bg-blue-600 font-semibold"
+              >예약하기</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- 상세 설명 섹션 -->
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">헬스클럽 소개</h2>
+        <p class="text-gray-700">
+          이 헬스클럽은 최신 시설과 전문 트레이너를 갖추고 있으며, 쾌적한
+          환경에서 운동할 수 있는 최적의 공간입니다. 다양한 운동 프로그램과
+          맞춤형 추천 서비스를 통해 이용자들의 운동 지속성을 높여줍니다.
+        </p>
+      </section>
+
+      <!-- 이용 후기 섹션 -->
+      <section class="mb-8">
+        <h2 class="text-2xl font-bold mb-4">이용 후기</h2>
+        <div class="space-y-4">
+          <!-- 후기 카드 1 -->
+          <div class="bg-white p-4 rounded shadow">
+            <p class="italic text-gray-700 mb-2">
+              "최신 시설과 친절한 서비스 덕분에 매번 만족스럽게 운동하고
+              있습니다."
+            </p>
+            <p class="font-bold text-gray-900">- 김민수</p>
+          </div>
+          <!-- 후기 카드 2 -->
+          <div class="bg-white p-4 rounded shadow">
+            <p class="italic text-gray-700 mb-2">
+              "헬스클럽 1은 위치가 좋아서 출퇴근 중에도 간편하게 운동할 수
+              있어요."
+            </p>
+            <p class="font-bold text-gray-900">- 박지영</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- 공통 푸터 불러오기 -->
+    <div id="footer"></div>
+
+    <!-- header.html 및 footer.html 파일 불러오기 스크립트 -->
+    <script>
+      // 헤더 로드
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+      // 푸터 로드
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

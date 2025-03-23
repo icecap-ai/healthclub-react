@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>매찜 - 헬스클럽 공유 플랫폼</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto p-4">
+      <!-- 메인 배너 섹션 -->
+      <section
+        class="bg-cover bg-center h-80"
+        style="background-image: url('assets/images/gym-banner.jpg')"
+      >
+        <div
+          class="bg-black bg-opacity-60 h-full flex flex-col items-center justify-center"
+        >
+          <h1 class="text-white text-4xl font-bold mb-4">
+            AI 기반 헬스클럽 공유 플랫폼
+          </h1>
+          <p class="text-white text-xl mb-6">
+            실시간 예약 & 스마트 매칭, 지금 바로 경험하세요!
+          </p>
+          <div>
+            <a
+              href="signup.html"
+              class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mr-4"
+              >지금 시작하기</a
+            >
+            <a
+              href="free-trial.html"
+              class="bg-transparent border border-white hover:bg-white hover:text-black text-white font-bold py-2 px-4 rounded"
+              >무료 체험</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- 서비스 소개 섹션 -->
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold mb-4">서비스 소개</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-4 border rounded shadow">
+            <h3 class="text-xl font-semibold mb-2">AI 맞춤 추천</h3>
+            <p class="text-gray-700">
+              사용자의 운동 패턴과 목표를 분석하여 최적의 헬스클럽과 트레이너를
+              추천합니다.
+            </p>
+          </div>
+          <div class="p-4 border rounded shadow">
+            <h3 class="text-xl font-semibold mb-2">실시간 예약 시스템</h3>
+            <p class="text-gray-700">
+              현재 예약 가능한 시간대를 실시간으로 확인하고 예약할 수 있습니다.
+            </p>
+          </div>
+          <div class="p-4 border rounded shadow">
+            <h3 class="text-xl font-semibold mb-2">스마트 매칭 & 후기</h3>
+            <p class="text-gray-700">
+              추천 헬스클럽 카드와 이용자 후기를 통해 현명한 선택을 할 수
+              있습니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 파트너 로고 섹션 -->
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold mb-4 text-center">파트너 & 협력사</h2>
+        <div class="flex flex-wrap justify-center items-center space-x-6">
+          <img
+            src="assets/images/partner1.png"
+            alt="파트너 1"
+            class="h-12 my-2"
+          />
+          <img
+            src="assets/images/partner2.png"
+            alt="파트너 2"
+            class="h-12 my-2"
+          />
+          <img
+            src="assets/images/partner3.png"
+            alt="파트너 3"
+            class="h-12 my-2"
+          />
+        </div>
+      </section>
+
+      <!-- 이용 후기 섹션 -->
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold mb-4 text-center">이용 후기</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- 후기 카드 1 -->
+          <div class="p-6 border rounded shadow">
+            <p class="text-gray-700 italic mb-4">
+              "매찜 덕분에 원하는 시간에 헬스클럽 예약을 쉽게 할 수 있어서 정말
+              편리합니다!"
+            </p>
+            <p class="text-gray-900 font-bold">- 김철수</p>
+          </div>
+          <!-- 후기 카드 2 -->
+          <div class="p-6 border rounded shadow">
+            <p class="text-gray-700 italic mb-4">
+              "AI 맞춤 추천 기능이 제 운동 스타일에 딱 맞아 매번 만족스럽게
+              이용하고 있습니다."
+            </p>
+            <p class="text-gray-900 font-bold">- 이영희</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 하단 연결 섹션 -->
+      <section class="mt-10 text-center">
+        <p class="text-gray-700 mb-4">
+          더 자세한 서비스 정보를 원하시면 아래 링크를 확인하세요.
+        </p>
+        <div>
+          <a href="signup.html" class="text-blue-500 hover:underline mr-4"
+            >회원가입</a
+          >
+          <a href="login.html" class="text-blue-500 hover:underline mr-4"
+            >로그인</a
+          >
+          <a href="service-detail.html" class="text-blue-500 hover:underline"
+            >상세 서비스 정보</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <!-- 푸터 불러오기 -->
+    <div id="footer"></div>
+
+    <!-- JavaScript로 header.html, footer.html 불러오기 -->
+    <script>
+      // 헤더 로드
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+
+      // 푸터 로드
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

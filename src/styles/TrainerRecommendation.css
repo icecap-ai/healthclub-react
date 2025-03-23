@@ -1,0 +1,142 @@
+.trainer-recommendation {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.trainers-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.trainer-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+}
+
+.trainer-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.trainer-card.selected {
+  border: 2px solid #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+.trainer-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+}
+
+.trainer-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.trainer-info {
+  padding: 1.5rem;
+}
+
+.trainer-name {
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.trainer-specialization {
+  color: #4b5563;
+  margin-bottom: 0.5rem;
+}
+
+.trainer-rating {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.stars {
+  color: #fbbf24;
+}
+
+.rating-number {
+  font-weight: 600;
+}
+
+.reviews-count {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.trainer-experience {
+  color: #4b5563;
+  margin-bottom: 1rem;
+}
+
+.trainer-description {
+  color: #374151;
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.trainer-certifications {
+  margin-bottom: 1rem;
+}
+
+.trainer-certifications h4 {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.trainer-certifications ul {
+  list-style: none;
+  padding: 0;
+}
+
+.trainer-certifications li {
+  color: #4b5563;
+  font-size: 0.875rem;
+  margin-bottom: 0.25rem;
+}
+
+.trainer-availability {
+  color: #4b5563;
+  font-size: 0.875rem;
+}
+
+.recommendation-actions {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.confirm-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background-color 0.2s;
+}
+
+.confirm-button:hover {
+  background-color: #2563eb;
+}
+
+.confirm-button:disabled {
+  background-color: #9ca3af;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .trainers-grid {
+    grid-template-columns: 1fr;
+  }
+} 

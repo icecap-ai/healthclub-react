@@ -1,0 +1,232 @@
+.mypage {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 프로필 헤더 스타일 */
+.profile-header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.profile-image {
+  position: relative;
+}
+
+.profile-image img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.edit-profile-btn {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #3B82F6;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.profile-info h1 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.email {
+  color: #6B7280;
+  margin-bottom: 1rem;
+}
+
+.membership-info {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.level {
+  background: #FCD34D;
+  color: #92400E;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.points {
+  color: #4B5563;
+  font-weight: 500;
+}
+
+/* 탭 메뉴 스타일 */
+.tab-menu {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #E5E7EB;
+  padding-bottom: 1rem;
+}
+
+.tab-btn {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: none;
+  font-weight: 500;
+  color: #6B7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.tab-btn.active {
+  color: #3B82F6;
+  border-bottom: 2px solid #3B82F6;
+  margin-bottom: -1rem;
+}
+
+/* 탭 컨텐츠 스타일 */
+.tab-content {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+}
+
+/* 프로필 섹션 스타일 */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  margin-top: 1.5rem;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.label {
+  color: #6B7280;
+  font-size: 0.875rem;
+}
+
+.value {
+  font-weight: 500;
+}
+
+/* 예약 내역 스타일 */
+.reservations-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.reservation-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem;
+  background: #F9FAFB;
+  border-radius: 8px;
+}
+
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.status-badge.예약-완료 {
+  background: #10B981;
+  color: white;
+}
+
+.status-badge.완료 {
+  background: #6B7280;
+  color: white;
+}
+
+/* 운동 기록 스타일 */
+.workout-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.workout-item {
+  padding: 1.5rem;
+  background: #F9FAFB;
+  border-radius: 8px;
+}
+
+.workout-date {
+  color: #6B7280;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.workout-notes {
+  margin-top: 0.5rem;
+  color: #4B5563;
+}
+
+/* 설정 섹션 스타일 */
+.settings-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.settings-btn {
+  padding: 1rem;
+  text-align: left;
+  background: #F9FAFB;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.settings-btn:hover {
+  background: #F3F4F6;
+}
+
+.settings-btn.danger {
+  color: #EF4444;
+}
+
+/* 반응형 스타일 */
+@media (max-width: 640px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tab-menu {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-bottom: 0.5rem;
+  }
+
+  .tab-btn {
+    padding: 0.5rem 1rem;
+  }
+
+  .reservation-item {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+} 

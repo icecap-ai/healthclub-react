@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaeZim 헬스클럽 검색 및 예약</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <!-- Naver Map API (클라이언트 ID 실제 사용) -->
+    <script src="https://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=sem48lir2l"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /* 헤더와 푸터 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1rem;
+      }
+      /* 검색 필터 섹션 */
+      .search-filters {
+        background: white;
+        padding: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        margin-bottom: 1rem;
+      }
+      .search-filters form {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        align-items: center;
+      }
+      .search-filters input,
+      .search-filters select {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+      }
+      .search-filters button {
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 5px;
+        background-color: #007bff;
+        color: white;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: 600;
+      }
+      /* Naver 지도 표시 섹션 */
+      #map {
+        width: 100%;
+        height: 400px;
+        border-radius: 10px;
+        margin-bottom: 1rem;
+      }
+      /* 헬스클럽 카드 리스트 섹션 */
+      .card-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1rem;
+      }
+      .card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        text-decoration: none;
+        color: inherit;
+        transition: transform 0.2s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .card img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+      }
+      .card-content {
+        padding: 0.75rem;
+      }
+      .card-content h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.2rem;
+        font-weight: 600;
+      }
+      .card-content p {
+        font-size: 0.9rem;
+        color: #666;
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 공통 헤더 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 -->
+    <main class="flex-grow container mx-auto p-4">
+      <h1 class="text-3xl font-bold mb-6">헬스클럽 검색 및 예약</h1>
+      <!-- 검색 필터 섹션 -->
+      <section class="search-filters">
+        <form id="searchForm" class="flex flex-wrap items-center gap-4">
+          <input
+            type="text"
+            name="location"
+            id="locationInput"
+            placeholder="예: 강남구"
+          />
+          <input type="time" name="time" placeholder="시간" />
+          <select name="purpose">
+            <option value="">운동 목적 선택</option>
+            <option value="weightloss">체중 감량</option>
+            <option value="muscle">근력 강화</option>
+            <option value="endurance">지구력 향상</option>
+          </select>
+          <button type="submit">검색</button>
+        </form>
+      </section>
+
+      <!-- Naver 지도 표시 섹션 -->
+      <section id="map"></section>
+
+      <!-- 헬스클럽 카드 리스트 섹션 -->
+      <section id="cardList" class="card-list">
+        <!-- 초기 카드들은 JavaScript로 렌더링 -->
+      </section>
+    </main>
+
+    <!-- 공통 푸터 -->
+    <div id="footer"></div>
+
+    <!-- 헤더 및 푸터 로드 스크립트 -->
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+
+    <!-- Naver Map API로 지도 생성 -->
+    <script>
+      let map;
+      let markers = []; // 지도 마커 배열
+
+      window.onload = function () {
+        const mapOptions = {
+          center: new naver.maps.LatLng(37.4979, 127.0276), // 강남구 중심 좌표 예시
+          zoom: 12,
+        };
+        map = new naver.maps.Map(document.getElementById("map"), mapOptions);
+      };
+    </script>
+
+    <!-- 검색 필터 및 카드 리스트, 지도 마커 업데이트 스크립트 -->
+    <script>
+      // 예시 헬스클럽 데이터 (가맹점과 비가맹점 포함)
+      const gyms = [
+        {
+          name: "헬스클럽 1",
+          location: "서울 강남구",
+          image: "assets/images/gym1.jpg",
+          description: "최신 시설, 쾌적한 환경",
+          lat: 37.4979,
+          lng: 127.0276,
+          affiliated: true,
+        },
+        {
+          name: "헬스클럽 2",
+          location: "서울 강남구",
+          image: "assets/images/gym2.jpg",
+          description: "다양한 운동 기구 보유",
+          lat: 37.505,
+          lng: 127.026,
+          affiliated: false,
+        },
+        {
+          name: "헬스클럽 3",
+          location: "부산 해운대",
+          image: "assets/images/gym3.jpg",
+          description: "바다 전망과 함께하는 운동",
+          lat: 35.1631,
+          lng: 129.1635,
+          affiliated: true,
+        },
+        {
+          name: "헬스클럽 4",
+          location: "서울 강남구",
+          image: "assets/images/gym1.jpg",
+          description: "비가맹 헬스클럽, 다양한 시설",
+          lat: 37.48,
+          lng: 127.03,
+          affiliated: false,
+        },
+      ];
+
+      // DOM 요소 캐싱
+      const searchForm = document.getElementById("searchForm");
+      const locationInput = document.getElementById("locationInput");
+      const cardList = document.getElementById("cardList");
+
+      // 기존 마커 삭제 함수
+      function clearMarkers() {
+        markers.forEach((marker) => marker.setMap(null));
+        markers = [];
+      }
+
+      // 헬스클럽 카드 생성 함수
+      function createGymCard(gym) {
+        const card = document.createElement("a");
+        card.href = "service-detail.html";
+        card.className = "card";
+        card.innerHTML = `
+          <img src="${gym.image}" alt="${gym.name}" />
+          <div class="card-content">
+            <h3>${gym.name}</h3>
+            <p>${gym.location} - ${gym.description}</p>
+          </div>
+        `;
+        return card;
+      }
+
+      // 지도에 마커 추가 함수 (가맹/비가맹에 따라 다른 아이콘 사용)
+      function addMarkers(gymsData) {
+        clearMarkers();
+        gymsData.forEach((gym) => {
+          const marker = new naver.maps.Marker({
+            position: new naver.maps.LatLng(gym.lat, gym.lng),
+            map: map,
+            title: gym.name,
+            icon: {
+              url: gym.affiliated
+                ? "assets/images/marker_affiliated.png"
+                : "assets/images/marker_nonaffiliated.png",
+              size: new naver.maps.Size(30, 30),
+              origin: new naver.maps.Point(0, 0),
+              anchor: new naver.maps.Point(15, 30),
+            },
+          });
+          markers.push(marker);
+        });
+      }
+
+      // 카드 리스트 렌더링 함수
+      function renderGymCards(filteredGyms) {
+        cardList.innerHTML = "";
+        if (filteredGyms.length === 0) {
+          cardList.innerHTML =
+            "<p class='text-center w-full'>검색 결과가 없습니다.</p>";
+          return;
+        }
+        filteredGyms.forEach((gym) => {
+          const card = createGymCard(gym);
+          cardList.appendChild(card);
+        });
+        // 지도에 필터링된 헬스클럽 마커 추가
+        addMarkers(filteredGyms);
+      }
+
+      // 폼 제출 이벤트 처리
+      searchForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const query = locationInput.value.trim();
+        const filteredGyms = gyms.filter((gym) =>
+          gym.location.toLowerCase().includes(query.toLowerCase())
+        );
+        renderGymCards(filteredGyms);
+      });
+
+      // 페이지 로드시 전체 목록 렌더링 및 지도 마커 추가
+      renderGymCards(gyms);
+    </script>
+  </body>
+</html>

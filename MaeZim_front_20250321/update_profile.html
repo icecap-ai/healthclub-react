@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>프로필 수정 - MaeZim</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /* 헤더와 푸터 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto p-4">
+      <h1 class="text-3xl font-bold mb-6 text-center">프로필 수정</h1>
+      <form
+        action="update_profile_process.php"
+        method="POST"
+        enctype="multipart/form-data"
+        class="bg-white p-6 rounded shadow max-w-lg mx-auto"
+      >
+        <!-- 이름 입력 -->
+        <div class="mb-4">
+          <label for="name" class="block font-semibold mb-1">이름</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            value="홍길동"
+            class="w-full border p-2 rounded"
+            required
+          />
+        </div>
+        <!-- 이메일 입력 -->
+        <div class="mb-4">
+          <label for="email" class="block font-semibold mb-1">이메일</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            value="hong@example.com"
+            class="w-full border p-2 rounded"
+            required
+          />
+        </div>
+        <!-- 연락처 입력 -->
+        <div class="mb-4">
+          <label for="phone" class="block font-semibold mb-1">연락처</label>
+          <input
+            type="tel"
+            id="phone"
+            name="phone"
+            value="010-1234-5678"
+            class="w-full border p-2 rounded"
+            required
+          />
+        </div>
+        <!-- 프로필 사진 업로드 -->
+        <div class="mb-4">
+          <label for="profile_picture" class="block font-semibold mb-1">
+            프로필 사진
+          </label>
+          <input
+            type="file"
+            id="profile_picture"
+            name="profile_picture"
+            class="w-full border p-2 rounded"
+          />
+        </div>
+        <!-- 저장 및 취소 버튼 -->
+        <div class="flex justify-between">
+          <button
+            type="submit"
+            class="bg-blue-500 text-white py-2 px-4 rounded font-semibold hover:bg-blue-600"
+          >
+            저장
+          </button>
+          <a
+            href="profile.html"
+            class="text-blue-500 hover:underline py-2 px-4 rounded font-semibold"
+          >
+            취소
+          </a>
+        </div>
+      </form>
+    </main>
+
+    <!-- 공통 푸터 불러오기 -->
+    <div id="footer"></div>
+
+    <!-- 헤더 및 푸터 파일 불러오기 스크립트 -->
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

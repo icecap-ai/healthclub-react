@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MaeZim 회원가입</title>
+    <link rel="stylesheet" href="styles.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /* 헤더와 푸터가 로드될 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+      .register-container {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        width: 350px;
+        margin: 2rem auto;
+      }
+      h1 {
+        color: #333;
+        margin-bottom: 1.5rem;
+        font-weight: 600;
+      }
+      .social-login {
+        margin-bottom: 1.5rem;
+      }
+      .social-login button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        margin-bottom: 0.5rem;
+        font-weight: 600;
+      }
+      .social-login button img {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+      }
+      .gmail-login {
+        background-color: white;
+        color: black;
+      }
+      .kakao-login {
+        background-color: #fee500;
+        color: #3c1e1e;
+      }
+      .naver-login {
+        background-color: #03c75a;
+        color: white;
+      }
+      .divider {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 1rem 0;
+        color: #aaa;
+        font-weight: 600;
+      }
+      .divider::before,
+      .divider::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: #ddd;
+        margin: 0 10px;
+      }
+      .email-register {
+        display: block;
+        text-align: center;
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #007bff;
+        border-radius: 5px;
+        font-size: 1rem;
+        cursor: pointer;
+        font-weight: 600;
+        background-color: white;
+        color: #007bff;
+        text-decoration: none;
+      }
+      .email-register:hover {
+        background-color: #007bff;
+        color: white;
+      }
+      .login-link {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+      }
+      .login-link a {
+        color: #007bff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .login-link a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 회원가입 컨테이너 -->
+    <div class="register-container">
+      <h1>MaeZim 회원가입</h1>
+      <div class="social-login">
+        <button class="naver-login">
+          <img src="assets/images/naver.png" alt="Naver" />네이버로 시작하기
+        </button>
+        <button class="kakao-login">
+          <img src="assets/images/kakao.png" alt="Kakao" />카카오로 시작하기
+        </button>
+        <button class="gmail-login">
+          <img src="assets/images/goggle.png" alt="Google" />Google로 시작하기
+        </button>
+      </div>
+      <div class="divider">또는</div>
+      <!-- 이메일로 가입하기 버튼을 signup_form.html로 연결 -->
+      <a href="signup_form.html" class="email-register">이메일로 가입하기</a>
+      <div class="login-link">
+        이미 회원이신가요? <a href="login.html">로그인</a>
+      </div>
+    </div>
+  </body>
+</html>

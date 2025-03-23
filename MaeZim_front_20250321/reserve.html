@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>예약 진행 - MaeZim</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /* 헤더와 푸터 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto p-4">
+      <h1 class="text-3xl font-bold mb-6">예약 진행</h1>
+
+      <!-- 예약 진행 폼 -->
+      <form
+        action="reserve_process.php"
+        method="POST"
+        class="bg-white p-6 rounded shadow"
+      >
+        <!-- 예약 날짜 -->
+        <div class="mb-4">
+          <label for="reservation-date" class="block font-semibold mb-1"
+            >예약 날짜</label
+          >
+          <input
+            type="date"
+            id="reservation-date"
+            name="reservation_date"
+            class="w-full border p-2 rounded"
+            required
+          />
+        </div>
+        <!-- 예약 시간 -->
+        <div class="mb-4">
+          <label for="reservation-time" class="block font-semibold mb-1"
+            >예약 시간</label
+          >
+          <input
+            type="time"
+            id="reservation-time"
+            name="reservation_time"
+            class="w-full border p-2 rounded"
+            required
+          />
+        </div>
+        <!-- 예약 위치 (추가 항목) -->
+        <div class="mb-4">
+          <label for="location" class="block font-semibold mb-1"
+            >예약 위치</label
+          >
+          <input
+            type="text"
+            id="location"
+            name="location"
+            placeholder="예약 위치 입력"
+            class="w-full border p-2 rounded"
+            required
+          />
+        </div>
+        <!-- 운동 목적 (추가 항목) -->
+        <div class="mb-4">
+          <label for="exercise-purpose" class="block font-semibold mb-1"
+            >운동 목적</label
+          >
+          <select
+            id="exercise-purpose"
+            name="exercise_purpose"
+            class="w-full border p-2 rounded"
+            required
+          >
+            <option value="">운동 목적 선택</option>
+            <option value="weightloss">체중 감량</option>
+            <option value="muscle">근력 강화</option>
+            <option value="flexibility">유연성 증진</option>
+            <option value="endurance">지구력 향상</option>
+          </select>
+        </div>
+
+        <!-- AI 추천 및 예약 버튼 -->
+        <button
+          type="submit"
+          class="w-full bg-green-500 text-white p-3 rounded font-semibold hover:bg-green-600"
+        >
+          AI 추천 및 예약
+        </button>
+      </form>
+
+      <!-- 예약 목록으로 돌아가기 링크 -->
+      <div class="mt-4">
+        <a href="search.html" class="text-blue-500 hover:underline"
+          >&larr; 예약 목록으로 돌아가기</a
+        >
+      </div>
+    </main>
+
+    <!-- 공통 푸터 불러오기 -->
+    <div id="footer"></div>
+
+    <!-- 헤더 및 푸터 불러오기 스크립트 -->
+    <script>
+      // 헤더 로드
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+      // 푸터 로드
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

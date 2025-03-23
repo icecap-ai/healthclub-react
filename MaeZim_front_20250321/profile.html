@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>마이 페이지 - MaeZim</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /* 헤더와 푸터 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto p-4">
+      <h1 class="text-3xl font-bold mb-6">마이 페이지</h1>
+
+      <!-- 프로필 정보 섹션 -->
+      <section class="bg-white p-6 rounded shadow mb-6">
+        <div class="flex items-center">
+          <img
+            src="assets/images/profile.png"
+            alt="프로필 사진"
+            class="w-20 h-20 object-cover rounded-full"
+          />
+          <div>
+            <h2 class="text-xl font-bold">홍길동</h2>
+            <p class="text-gray-700">hong@example.com</p>
+            <p class="text-gray-700">010-1234-5678</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 예약 내역 섹션 -->
+      <section class="bg-white p-6 rounded shadow mb-6">
+        <h2 class="text-2xl font-bold mb-4">예약 내역</h2>
+        <div class="overflow-x-auto">
+          <table class="min-w-full bg-white">
+            <thead>
+              <tr>
+                <th class="py-2 px-4 border-b">예약 번호</th>
+                <th class="py-2 px-4 border-b">헬스클럽 이름</th>
+                <th class="py-2 px-4 border-b">예약 날짜</th>
+                <th class="py-2 px-4 border-b">예약 시간</th>
+                <th class="py-2 px-4 border-b">상태</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="py-2 px-4 border-b">001</td>
+                <td class="py-2 px-4 border-b">헬스클럽 1</td>
+                <td class="py-2 px-4 border-b">2025-05-01</td>
+                <td class="py-2 px-4 border-b">10:00</td>
+                <td class="py-2 px-4 border-b">예약 완료</td>
+              </tr>
+              <tr>
+                <td class="py-2 px-4 border-b">002</td>
+                <td class="py-2 px-4 border-b">헬스클럽 2</td>
+                <td class="py-2 px-4 border-b">2025-05-10</td>
+                <td class="py-2 px-4 border-b">14:00</td>
+                <td class="py-2 px-4 border-b">취소됨</td>
+              </tr>
+              <!-- 추가 예약 내역 행 추가 가능 -->
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- 설정 섹션 -->
+      <section class="bg-white p-6 rounded shadow mb-6">
+        <h2 class="text-2xl font-bold mb-4">설정</h2>
+        <ul class="space-y-2">
+          <li>
+            <a href="update_profile.html" class="text-blue-500 hover:underline">
+              프로필 수정
+            </a>
+          </li>
+          <li>
+            <a
+              href="change_password.html"
+              class="text-blue-500 hover:underline"
+            >
+              비밀번호 변경
+            </a>
+          </li>
+          <li>
+            <a href="logout.php" class="text-blue-500 hover:underline">
+              로그아웃
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <!-- 공통 푸터 불러오기 -->
+    <div id="footer"></div>
+
+    <!-- 헤더 및 푸터 파일 불러오기 스크립트 -->
+    <script>
+      // 헤더 로드
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+      // 푸터 로드
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

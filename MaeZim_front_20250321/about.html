@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회사소개 - MaeZim</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        line-height: 1.6;
+      }
+      /* 헤더와 푸터 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+      .content {
+        max-width: 800px;
+        margin: 20px auto;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto p-4">
+      <div class="content">
+        <h1 class="text-3xl font-bold mb-6 text-center">회사소개</h1>
+        <section>
+          <h2 class="text-2xl font-bold mb-4">미션 & 비전</h2>
+          <p class="mb-4">
+            매찜은 혁신적인 AI 기반 헬스클럽 공유 플랫폼을 통해 사용자가 쉽고
+            편리하게 건강을 관리할 수 있도록 돕습니다. 우리의 비전은 모든
+            이용자에게 최적의 운동 환경을 제공하여 건강한 삶을 촉진하는
+            것입니다.
+          </p>
+        </section>
+        <section>
+          <h2 class="text-2xl font-bold mb-4">연혁</h2>
+          <ul class="list-disc list-inside mb-4">
+            <li>2021년 06월: 매찜 설립</li>
+            <li>2022년 03월: 플랫폼 MVP 출시</li>
+            <li>2023년 07월: AI 추천 시스템 도입</li>
+            <li>2024년 11월: 전국 주요 헬스클럽과 제휴 확대</li>
+          </ul>
+        </section>
+        <section>
+          <h2 class="text-2xl font-bold mb-4">팀 소개</h2>
+          <p class="mb-4">
+            매찜의 핵심 팀은 헬스, IT, 마케팅 분야의 전문 인력으로 구성되어
+            있으며, 각 분야의 최고 전문가들이 모여 최고의 서비스를 제공하고
+            있습니다.
+          </p>
+          <p>
+            우리의 팀은 혁신적인 아이디어와 끊임없는 도전으로, 건강한
+            라이프스타일을 위한 미래형 헬스 플랫폼을 만들어가고 있습니다.
+          </p>
+        </section>
+      </div>
+    </main>
+
+    <!-- 공통 푸터 불러오기 -->
+    <div id="footer"></div>
+
+    <!-- 헤더 및 푸터 불러오기 스크립트 -->
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

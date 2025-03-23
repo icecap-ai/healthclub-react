@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>고객센터 - MaeZim</title>
+    <!-- Tailwind CSS CDN (초안용) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      /* 헤더와 푸터 영역 */
+      #header,
+      #footer {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body class="flex flex-col min-h-screen">
+    <!-- 공통 헤더 불러오기 -->
+    <div id="header"></div>
+
+    <!-- 메인 콘텐츠 영역 -->
+    <main class="flex-grow container mx-auto p-4">
+      <h1 class="text-3xl font-bold mb-6 text-center">고객센터</h1>
+
+      <!-- 문의 폼 섹션 -->
+      <section class="bg-white p-6 rounded shadow mb-8 max-w-lg mx-auto">
+        <h2 class="text-2xl font-bold mb-4">문의하기</h2>
+        <form action="contact_process.php" method="POST" class="space-y-4">
+          <div>
+            <label for="name" class="block font-semibold mb-1">이름</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="이름 입력"
+              required
+              class="w-full border p-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="email" class="block font-semibold mb-1">이메일</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="이메일 입력"
+              required
+              class="w-full border p-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="phone" class="block font-semibold mb-1"
+              >연락처 (선택)</label
+            >
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              placeholder="연락처 입력"
+              class="w-full border p-2 rounded"
+            />
+          </div>
+          <div>
+            <label for="message" class="block font-semibold mb-1"
+              >문의 내용</label
+            >
+            <textarea
+              id="message"
+              name="message"
+              rows="4"
+              placeholder="문의 내용을 입력하세요"
+              required
+              class="w-full border p-2 rounded"
+            ></textarea>
+          </div>
+          <button
+            type="submit"
+            class="w-full bg-blue-500 text-white p-3 rounded font-semibold hover:bg-blue-600"
+          >
+            문의 제출
+          </button>
+        </form>
+      </section>
+
+      <!-- FAQ 섹션 (자주 묻는 질문) -->
+      <section class="bg-white p-6 rounded shadow max-w-3xl mx-auto">
+        <h2 class="text-2xl font-bold mb-4 text-center">자주 묻는 질문</h2>
+        <div class="space-y-4">
+          <details class="p-4 border rounded">
+            <summary class="font-semibold cursor-pointer">
+              회원 가입은 어떻게 하나요?
+            </summary>
+            <p class="mt-2 text-gray-700">
+              회원 가입은 홈페이지 우측 상단의 '회원가입' 버튼을 클릭하여 간단한
+              정보를 입력하면 완료됩니다.
+            </p>
+          </details>
+          <details class="p-4 border rounded">
+            <summary class="font-semibold cursor-pointer">
+              예약 변경 및 취소는 어떻게 하나요?
+            </summary>
+            <p class="mt-2 text-gray-700">
+              예약 변경 및 취소는 '마이 페이지' 내 예약 내역에서 가능하며, 일정
+              시간 이전에만 변경/취소가 가능합니다.
+            </p>
+          </details>
+          <details class="p-4 border rounded">
+            <summary class="font-semibold cursor-pointer">
+              기업 고객 상담은 어디로 문의해야 하나요?
+            </summary>
+            <p class="mt-2 text-gray-700">
+              기업 고객 관련 문의는 '기업 고객' 페이지를 통해 문의 양식을
+              작성하시거나, 고객센터로 직접 연락해 주세요.
+            </p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <!-- 공통 푸터 불러오기 -->
+    <div id="footer"></div>
+
+    <!-- 헤더 및 푸터 불러오기 스크립트 -->
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header").innerHTML = data;
+        });
+      fetch("footer.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("footer").innerHTML = data;
+        });
+    </script>
+  </body>
+</html>
